@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242a2b">
+  <title></title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script src="content.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="identity">
+        <span class="school-icon" aria-hidden="true"><i></i></span>
+        <div><p class="eyebrow" id="eyebrow"></p><h1 id="title"></h1></div>
+      </div>
+      <button class="notebook-button" id="notebook-open" type="button">
+        <span class="book-icon" aria-hidden="true"></span><span id="notebook-label"></span><kbd id="notebook-key"></kbd>
+      </button>
+    </header>
+
+    <section class="game-panel" id="game-panel">
+      <div class="panel-bar">
+        <nav id="locations"></nav>
+        <button class="end-slot-button" id="world-open" type="button"></button>
+        <span class="session-status"><i aria-hidden="true"></i><span id="session-label"></span></span>
+      </div>
+      <div class="stage" id="stage">
+        <canvas id="game" width="320" height="180" tabindex="0"></canvas>
+        <canvas class="mini-map" id="mini-map"></canvas>
+        <div class="time-hud" aria-live="polite">
+          <div class="date-block"><span id="date-label"></span><span id="slot-label"></span></div>
+          <div class="deadline-block"><span class="deadline-mark" aria-hidden="true"></span><span id="deadline-label"></span></div>
+        </div>
+        <div class="scene-caption"><span class="location-dot" aria-hidden="true"></span><span id="scene-label"></span></div>
+        <div class="interaction-prompt" id="interaction-prompt" hidden><span class="prompt-dot" aria-hidden="true"></span><span id="interaction-label"></span></div>
+        <div class="toast" id="toast" role="status" hidden></div>
+        <div class="modal-layer" id="modal-layer" hidden>
+          <section class="pixel-window dialogue-window" id="dialogue" role="dialog" aria-modal="true" hidden>
+            <header class="window-bar"><span id="dialogue-title"></span><button class="close-button" id="dialogue-close" type="button"></button></header>
+            <div class="dialogue-body">
+              <figure class="closeup" id="closeup" hidden><canvas id="closeup-canvas" width="112" height="72"></canvas><figcaption id="closeup-title"></figcaption></figure>
+              <div class="dialogue-copy"><p id="dialogue-text"></p><span class="record-label" id="record-label"></span></div>
+            </div>
+            <footer class="window-footer"><span id="dialogue-page"></span><button class="primary-button" id="dialogue-next" type="button"></button></footer>
+          </section>
+          <section class="pixel-window notebook-window" id="notebook" role="dialog" aria-modal="true" hidden>
+            <header class="window-bar"><span id="notebook-title"></span><button class="close-button" id="notebook-close" type="button"></button></header>
+            <div class="notebook-meta"><span id="notebook-count"></span><span class="binding" aria-hidden="true"></span></div>
+            <div class="notebook-pages" id="notebook-pages"></div>
+            <footer class="window-footer"><span id="notebook-footnote"></span></footer>
+          </section>
+          <section class="pixel-window time-window" id="action-confirm" role="dialog" aria-modal="true" hidden>
+            <header class="window-bar"><span id="action-confirm-title"></span></header>
+            <p class="time-message" id="action-confirm-message"></p>
+            <footer class="window-footer"><button class="secondary-button" id="action-cancel" type="button"></button><button class="primary-button" id="action-accept" type="button"></button></footer>
+          </section>
+          <section class="pixel-window time-window" id="time-notice" role="dialog" aria-modal="true" hidden>
+            <header class="window-bar"><span id="time-notice-title"></span></header>
+            <p class="time-message" id="time-notice-message"></p>
+            <footer class="window-footer"><button class="primary-button" id="time-notice-continue" type="button"></button></footer>
+          </section>
+        </div>
+        <div class="time-transition" id="time-transition" aria-hidden="true"><span id="transition-label"></span></div>
+        <section class="world-layer" id="world-layer" role="dialog" aria-modal="true" aria-labelledby="world-title" hidden>
+          <div class="world-window">
+            <header class="window-bar"><span id="world-title"></span><div><button class="close-button" id="world-back" type="button"></button><button class="close-button" id="world-close" type="button"></button></div></header>
+            <p class="map-breadcrumb" id="map-breadcrumb"></p>
+            <canvas id="world-canvas" tabindex="0"></canvas>
+            <p class="map-status" id="map-status" role="status"></p>
+            <p class="map-legend" id="map-legend"></p>
+            <footer class="window-footer"><span id="map-help"></span><button class="primary-button" id="map-end-slot" type="button"></button></footer>
+          </div>
+        </section>
+      </div>
+      <footer class="controls-bar"><div class="controls" id="controls"></div><span class="clue-counter" id="clue-counter"></span><button class="end-slot-button" id="end-slot" type="button"></button></footer>
+    </section>
+    <footer class="page-footer"><span id="footer-label"></span><span id="footer-hint"></span></footer>
+  </main>
+</body>
+</html>
